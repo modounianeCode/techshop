@@ -1,0 +1,161 @@
+/* ----- Styles généraux ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ----- Header ----- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0a23;
+  color: #fff;
+  padding: 15px 40px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.logo span {
+  color: #00bfff;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #00bfff;
+}
+
+/* ----- Hero section ----- */
+.hero {
+  background: url('../images/hero-bg.jpg') center/cover no-repeat;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-color: #111;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.hero span {
+  color: #00bfff;
+}
+
+.btn {
+  background-color: #00bfff;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #008ecc;
+}
+
+/* ----- Produits vedettes ----- */
+.featured {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin: 10px 0;
+}
+
+.product-card p {
+  color: #00bfff;
+  font-weight: bold;
+}
+
+/* ----- Footer ----- */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #0a0a23;
+  color: white;
+  margin-top: 30px;
+}
+/* ----- Page produits ----- */
+.product-page {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.product-page h1 {
+  font-size: 28px;
+  color: #0a0a23;
+}
+
+.search-bar {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* Bouton actif du menu */
+.navbar .active {
+  color: #00bfff;
+}
+a[href="products.html"]{
+  color: white;
+  display: block;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+}
