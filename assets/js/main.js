@@ -37,3 +37,86 @@ searchInput.addEventListener("input", () => {
   const filtered = products.filter(prod => prod.name.toLowerCase().includes(value));
   displayProducts(filtered);
 });
+// Exemple de produits ajoutés au panier (localStorage simulé)
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Sélection des éléments
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+// Fonction pour afficher le panier
+function displayCart() {
+  cartItems.innerHTML = "";
+
+  if(cart.length === 0) {
+    cartItems.innerHTML = "<p>Votre panier est vide.</p>";
+    cartTotal.textContent = "0 CFA";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    const cartRow = document.createElement("div");
+    cartRow.classList.add("cart-row");
+    cartRow.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <h3>${item.name}</h3>
+      <p>Prix : ${item.price} CFA</p>
+      <p>Quantité : 
+        <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="qty">
+      </p>
+      <p>Total : ${itemTotal} CFA</p>
+      <button data-index="${index}" class="remove-btn">Supprimer</button>
+    `;
+    cartItems.appendChild(cartRow);
+  });
+
+  cartTotal.textContent = total + " CFA";
+
+  // Ajouter écouteurs aux boutons
+  document.querySelectorAll(".remove-btn").forEach(btn => {
+    btn.addEventListener("click", removeItem);
+  });
+
+  document.querySelectorAll(".qty").forEach(input => {
+    input.addEventListener("change", updateQuantity);
+  });
+}
+
+// Supprimer un produit
+function removeItem(e) {
+  const index = e.target.dataset.index;
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+// Modifier quantité
+function updateQuantity(e) {
+  const index = e.target.dataset.index;
+  const value = parseInt(e.target.value);
+  if(value < 1) e.target.value = 1;
+  cart[index].quantity = parseInt(e.target.value);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+// Checkout
+checkoutBtn.addEventListener("click", () => {
+  if(cart.length === 0) {
+    alert("Votre panier est vide !");
+  } else {
+    alert("Merci pour votre commande ! (Simulation)");
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    displayCart();
+  }
+});
+
+// Afficher le panier au chargement
+displayCart();
